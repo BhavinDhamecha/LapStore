@@ -1,0 +1,28 @@
+.container
+  .row
+    .col-sm-9.col-md-7.col-lg-5.mx-auto
+      .card.card-signin.my-5
+        .card-body
+          = form_with(model: payment, local: true) do |form|
+            - if payment.errors.any?
+              #error_explanation
+                %h2
+                  = pluralize(payment.errors.count, error)
+                  prohibited this payment from being saved:
+                %ul
+                  - payment.errors.full_messages.each do |message|
+                    %li= message
+            = form.label :order_id
+            = form.select("order_id", Order.all.collect { |order|  order.id }, {}, class: "form-control")
+           
+            = form.label :mode
+            = form.text_field :mode,      autofocus: true,   class: "form-control"
+           
+            = form.label :status
+            = form.text_field :status,    autofocus: true,   class: "form-control"
+           
+            = form.label :amount
+            = form.number_field :amount,  autofocus: true,   class: "form-control"
+           
+            %hr.my-4
+            = form.submit "Submit", class: "btn btn-primary btn-block text-uppercase" 

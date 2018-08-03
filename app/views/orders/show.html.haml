@@ -1,0 +1,28 @@
+.order_view
+  .container
+    .card-body
+      %p
+        %strong Date:
+        = @order.date
+      %p
+        %strong Laptop:
+        = @order.laptop.name
+      %p
+        %strong Customer:
+        = @order.customer.name
+      %p
+        %strong Shipping address:
+        = @order.shipping_address
+      %p
+        %strong Billing address:
+        = @order.billing_address
+      %p
+        %strong Status:
+        = @order.status
+      %p
+        %strong Amount:
+        = @order.amount
+    %hr.my-4/
+    %div{:align => "center"}
+      = link_to 'Edit', edit_order_path(@order), class: "btn btn-primary"
+      = link_to 'Back', orders_path, class: "btn btn-primary"

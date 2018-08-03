@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2018-07-23
+  shipping_address: MyString
+  billing_address: MyString
+  status: MyString
+  amount: 1
+  laptop: one
+  customer: one
+
+two:
+  date: 2018-07-23
+  shipping_address: MyString
+  billing_address: MyString
+  status: MyString
+  amount: 1
+  laptop: two
+  customer: two

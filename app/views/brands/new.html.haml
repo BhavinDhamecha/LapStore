@@ -1,0 +1,6 @@
+.brand_view
+  %h1.card-title.text-center Add Brand
+  = render 'form', brand: @brand
+  %hr.my-4/
+  %div{:align => "center"}
+    = link_to 'Back', brands_path, class: "btn btn-primary"

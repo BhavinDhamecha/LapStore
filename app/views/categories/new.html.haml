@@ -1,0 +1,6 @@
+.category_view
+  %h1.card-title.text-center New Category
+  = render 'form', category: @category
+  %hr.my-4/
+  %div{:align => "center"}
+    = link_to 'Back', categories_path, class: "btn btn-primary"

@@ -1,0 +1,31 @@
+.container
+  .row
+    .col-sm-9.col-md-7.col-lg-5.mx-auto
+      .card.card-signin.my-5
+        .card-body
+          = form_with(model: order, local: true) do |form|
+            - if order.errors.any?
+              #error_explanation
+                %h2
+                  = pluralize(order.errors.count, "error")
+                  prohibited this order from being saved:
+                %ul
+                  - order.errors.full_messages.each do |message|
+                    %li= message
+            = form.label :date
+            = form.date_select :date
+            %br/
+            = form.label :laptop_name
+            = form.select("laptop_id", Laptop.all.collect {|laptop| [ laptop.name, laptop.id ] },{},                                            class: "form-control")
+            = form.label :customer_name
+            = form.select("customer_id", Customer.all.collect {|category| [ category.name, category.id ] },{},                                       class: "form-control")
+            = form.label :shipping_address
+            = form.text_field :shipping_address,          class: "form-control"
+            = form.label :billing_address
+            = form.text_field :billing_address,           class: "form-control"
+            = form.label :status
+            = form.text_field :status,                    class: "form-control"
+            = form.label :amount
+            = form.number_field :amount,                  class: "form-control"
+            %hr.my-4/
+            = form.submit "Submit", class: "btn btn-primary btn-block text-uppercase"

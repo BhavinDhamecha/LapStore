@@ -1,0 +1,19 @@
+.payment_view
+  .container
+    .card-body
+      %p
+        %strong Order:
+        = @payment.order.date
+      %p
+        %strong Mode:
+        = @payment.mode
+      %p
+        %strong Status:
+        = @payment.status
+      %p
+        %strong Amount:
+        = @payment.order.amount
+    %hr.my-4/
+    %div{:align => "center"}
+      = link_to 'Edit', edit_payment_path(@payment), 	class: "btn btn-primary"
+      = link_to 'Back', payments_path, 								class: "btn btn-primary"

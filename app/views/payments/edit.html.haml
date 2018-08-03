@@ -1,0 +1,7 @@
+.payment_view
+  %h1.card-title.text-center Editing Payment
+  = render 'form', payment: @payment
+  %hr.my-4/
+  %div{:align => "center"}
+    = link_to 'Show', @payment, class: "btn btn-primary"
+    = link_to 'Back', payments_path, class: "btn btn-primary"

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  laptop: one
+  category: one
+
+two:
+  laptop: two
+  category: two

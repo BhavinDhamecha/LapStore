@@ -1,0 +1,7 @@
+.order_view
+  %h1.card-title.text-center Edit Order
+  = render 'form', order: @order
+  %hr.my-4/
+  %div{:align => "center"}
+    = link_to 'Show', @order, class: "btn btn-primary"
+    = link_to 'Back', orders_path, class: "btn btn-primary"

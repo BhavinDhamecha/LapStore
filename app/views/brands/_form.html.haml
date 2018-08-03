@@ -1,0 +1,21 @@
+.container
+  .row
+    .col-sm-9.col-md-7.col-lg-5.mx-auto
+      .card.card-signin.my-5
+        .card-body
+          = form_with(model: brand, local: true) do |form|
+            - if brand.errors.any?
+              #error_explanation
+                %h2
+                  = pluralize(brand.errors.count, "error")
+                  prohibited this brand from being saved:
+                %ul
+                  - brand.errors.full_messages.each do |message|
+                    %li= message
+            = form.label :name
+            = form.text_field :name,    autofocus: true,   class: "form-control"
+            = form.label :website
+            = form.text_field :website, autofocus: true,   class: "form-control"
+            %br/
+            %hr.my-4/
+            = form.submit "Submit", class: "btn btn-primary btn-block text-uppercase"

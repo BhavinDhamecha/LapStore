@@ -1,0 +1,59 @@
+.laptop_view
+  .container
+    .card-body
+      #carouselExampleControls.carousel.slide{"data-ride" => "carousel"}
+        .carousel-inner
+          .carousel-item.active
+            - @laptop.images.each do |image|
+              = image_tag image.variant(resize: "200x200")
+
+            %br
+            %br
+            %p
+              %strong Model number:
+              = @laptop.model_number
+            %p
+              %strong Name:
+              = @laptop.name
+            %p
+              %strong Brand:
+              = @laptop.brand.name
+            %p
+              %strong Category:
+              - @laptop.categories.each do |category|
+                = category.name
+            %p
+              %strong Serial number:
+              = @laptop.serial_number
+            %p
+              %strong Ram:
+              = @laptop.ram
+            %p
+              %strong Hdd:
+              = @laptop.hdd
+            %p
+              %strong Processor:
+              = @laptop.processor
+            %p
+              %strong Weight:
+              = @laptop.weight
+            %p
+              %strong Screen:
+              = @laptop.screen
+            %p
+              %strong Graphics card:
+              = @laptop.graphics_card
+            %p
+              %strong Usb port:
+              = @laptop.usb_port
+            %p
+              %strong Hdmi port:
+              = @laptop.hdmi_port
+            %p
+              %strong Available:
+              = @laptop.available
+          
+          %hr.my-4/
+          %div{:align => "center"}
+            = link_to 'Edit', edit_laptop_path(@laptop), class: "btn btn-primary"
+            = link_to 'Back', laptops_path,              class: "btn btn-primary"

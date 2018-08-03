@@ -1,0 +1,10 @@
+.category_view
+  .container
+    .card-body
+      %p
+        %strong Category:
+        = @category.name
+    %hr.my-4/
+    %div{:align => "center"}
+      = link_to 'Edit', edit_category_path(@category),  class: "btn btn-primary"
+      = link_to 'Back', categories_path,                class: "btn btn-primary"

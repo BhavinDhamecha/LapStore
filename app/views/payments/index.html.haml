@@ -1,0 +1,31 @@
+.payment_view
+  .container
+    %h1 Payments
+    %table.table.table-hover.table-responsive
+      %thead
+        %tr
+          %th Order
+          %th Mode
+          %th Status
+          %th Amount
+          %th{:colspan => "3"} Action
+      %tbody
+        - @payments.each do |payment|
+          %tr
+            %td
+              = payment.order.date
+            %td
+              = payment.mode
+            %td
+              = payment.status
+            %td
+              = payment.amount
+            %td
+              = link_to 'Show', payment
+            %td
+              = link_to 'Edit', edit_payment_path(payment)
+            %td
+              = link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' }
+    %hr.my-4/
+    %div{:align => "center"}
+      = link_to 'New Payment', new_payment_path, class: "btn btn-primary text-uppercase"

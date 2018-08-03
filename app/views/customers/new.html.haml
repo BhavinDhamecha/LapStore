@@ -1,0 +1,6 @@
+.customer_view
+  %h1.card-title.text-center Add Customer
+  = render 'form', customer: @customer
+  %hr.my-4/
+  %div{:align => "center"}
+    = link_to 'Back', customers_path, class: "btn btn-primary"

@@ -1,0 +1,22 @@
+.customer_view
+  .container
+    .card-body
+      %p
+        %strong Name:
+        = @customer.name
+      %p
+        %strong Address:
+        = @customer.address
+      %p
+        %strong Number:
+        = @customer.number
+      %p
+        %strong Username:
+        = @customer.username
+      %p
+        %strong Email:
+        = @customer.email
+    %hr.my-4/
+    %div{:align => "center"}
+      = link_to 'Edit', edit_customer_path(@customer), class: "btn btn-primary"
+      = link_to 'Back', customers_path, class: "btn btn-primary"

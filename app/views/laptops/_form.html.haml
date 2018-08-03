@@ -1,0 +1,50 @@
+.container
+  .row
+    .col-sm-9.col-md-7.col-lg-5.mx-auto
+      .card.card-signin.my-5
+        .card-body
+          = form_with(model: laptop, local: true) do |form|
+            - if laptop.errors.any?
+              %h3
+                = pluralize(laptop.errors.count, "error")
+                prohibited this laptop from being saved:
+              %ul
+                - laptop.errors.full_messages.each do |message|
+                  %li= message
+            = form.label          :model_number
+            = form.text_field     :model_number, autofocus: true,   class: "form-control"
+            = form.label          :name
+            = form.text_field     :name, autofocus: true,           class: "form-control"
+            = form.label          :brand
+            = form.select("brand_id", Brand.all.collect {|brand| [ brand.name, brand.id ] },{}, class: "form-control")
+            #categories
+              = form.fields_for   :laptop_categories do |categories|
+                = render 'laptop_category_fields', f: categories
+              .links
+                = link_to_add_association 'Add Category', form, :laptop_categories
+            = form.label          :serial_number
+            = form.text_field     :serial_number, autofocus: true,  class: "form-control"
+            = form.label          :ram
+            = form.text_field     :ram, autofocus: true,            class: "form-control"
+            = form.label          :hdd
+            = form.text_field     :hdd, autofocus: true,            class: "form-control"
+            = form.label          :processor
+            = form.text_field     :processor, autofocus: true,      class: "form-control"
+            = form.label          :weight
+            = form.text_field     :weight, autofocus: true,         class: "form-control"
+            = form.label          :screen
+            = form.text_field     :screen, autofocus: true,         class: "form-control"
+            = form.label          :graphics_card
+            = form.text_field     :graphics_card, autofocus: true,  class: "form-control"
+            = form.label          :usb_port
+            = form.number_field   :usb_port, autofocus: true,       class: "form-control"
+            = form.label          :hdmi_port
+            = form.number_field   :hdmi_port, autofocus: true,      class: "form-control"
+            .custom-control.custom-checkbox.mb-3
+              = form.check_box    :available,                class: "custom-control-input"
+              = form.label        :available,                class: "custom-control-label"
+            = form.label          :images
+            = form.file_field     :images, multiple: true,   class: "form-control"
+            
+            %hr.my-4/
+            = form.submit "Submit", class: "btn btn-primary btn-block text-uppercase"

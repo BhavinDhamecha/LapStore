@@ -1,0 +1,127 @@
+body {
+  font-family: 'Nunito';
+  letter-spacing: 0.0625em;
+  /*background-color: #edc576;*/
+}
+
+a {
+  color: #2cd692;
+}
+
+a:focus, a:hover {
+  text-decoration: none;
+}
+
+.devise {
+  background: linear-gradient(to right, #0052D4, #65C7F7, #9CECFB);
+}
+
+.card-body {
+  background-color: white;
+}
+.table {
+  background-color: white;
+}
+
+h1 {
+  color: white;
+}
+
+footer p {
+  width: 100%;
+  height: 20px;
+}
+
+@media (min-width: 900px) {
+  body {
+    padding-top: 50px;
+  }
+}
+
+.btn {
+  box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+  padding: 1.25rem 2rem;
+  font-family: 'Varela Round';
+  font-size: 80%;
+  text-transform: uppercase;
+  letter-spacing: .15rem;
+  border: 0;
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  background-color: #64a19d;
+}
+
+.btn-primary:hover {
+  background-color: #4f837f;
+}
+
+.btn-primary:focus {
+  background-color: #4f837f;
+  color: white;
+}
+
+.btn-primary:active {
+  background-color: #467370 !important;
+}
+
+.laptop_view {
+  background-image: url("laptop_bg.jpg");
+  background-attachment: fixed;
+  min-height: 600px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.customer_view {
+  background-image: url("customer_bg.jpg");
+  background-attachment: fixed;
+  min-height: 600px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.order_view {
+  background-image: url("order_bg.jpg");
+  background-attachment: fixed;
+  min-height: 600px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.brand_view {
+  background-image: url("brand_bg.jpg");
+  background-attachment: fixed;
+  min-height: 600px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.payment_view {
+  background-image: url("payment_bg.jpg");
+  background-attachment: fixed;
+  min-height: 600px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.category_view {
+  background-image: url("category_bg.jpg");
+  background-attachment: fixed;
+  min-height: 600px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

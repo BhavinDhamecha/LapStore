@@ -1,0 +1,51 @@
+.laptop_view
+  .container
+    %h1 Laptops
+    = form_tag(laptops_path, method: :get) do
+      = text_field_tag :search_laptop, params[:search_laptop], placeholder: "Search Laptop"
+      = submit_tag 'Search', name: nil
+    %br
+    %table.table.table-hover.table-responsive
+      %thead
+        %tr
+          %th Name
+          %th Brand
+          %th Category
+          %th Ram
+          %th Hdd
+          %th Processor
+          %th Screen
+          %th Graphics card
+          %th Available
+          %th{:colspan => "3"} Action
+      %tbody
+        - @laptops.each do |laptop|
+          %tr
+            %td
+              = laptop.name
+            %td
+              = laptop.brand.name
+            %td
+              - laptop.categories.each do |category|
+                = category.name
+            %td
+              = laptop.ram
+            %td
+              = laptop.hdd
+            %td
+              = laptop.processor
+            %td
+              = laptop.screen
+            %td
+              = laptop.graphics_card
+            %td
+              = laptop.available
+            %td
+              = link_to 'Show', laptop
+            %td
+              = link_to 'Edit', edit_laptop_path(laptop)
+            %td
+              = link_to 'Destroy', laptop, method: :delete, data: { confirm: 'Are you sure?' }
+    %hr.my-4
+    %div{:align => "center"}
+      = link_to 'Add Laptop',   new_laptop_path, class: "btn btn-primary"

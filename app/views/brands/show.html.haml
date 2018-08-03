@@ -1,0 +1,13 @@
+.brand_view
+  .container
+    .card-body
+      %p
+        %strong Name:
+        = @brand.name
+      %p
+        %strong Website:
+        = @brand.website
+    %hr.my-4/
+    %div{:align => "center"}
+      = link_to 'Edit', edit_brand_path(@brand), 	class: "btn btn-primary"
+      = link_to 'Back', brands_path, 							class: "btn btn-primary"
