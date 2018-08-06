@@ -1,10 +1,11 @@
-class LaptopsController < ApplicationController
+  class LaptopsController < ApplicationController
   before_action :set_laptop, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   # GET /laptops
   # GET /laptops.json
   def index
-    @laptops = Laptop.search(params[:search_laptop])
+    @laptops = Laptop.order(:name).page(params[:page])
+    # @laptops = Laptop.search(params[:search_laptop])
   end
 
   # GET /laptops/1

@@ -1,4 +1,6 @@
 class Laptop < ApplicationRecord
+	paginates_per 5
+
 	has_many		:laptop_categories
 	has_many		:categories, through: :laptop_categories, dependent: :destroy
   belongs_to 	:brand

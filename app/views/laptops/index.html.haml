@@ -46,6 +46,11 @@
               = link_to 'Edit', edit_laptop_path(laptop)
             %td
               = link_to 'Destroy', laptop, method: :delete, data: { confirm: 'Are you sure?' }
+    
+    %hr.my-4
+    = paginate @laptops
+    
     %hr.my-4
     %div{:align => "center"}
       = link_to 'Add Laptop',   new_laptop_path, class: "btn btn-primary"
+
