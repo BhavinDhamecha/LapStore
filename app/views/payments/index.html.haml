@@ -26,6 +26,9 @@
               = link_to 'Edit', edit_payment_path(payment)
             %td
               = link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' }
-    %hr.my-4/
+    %hr.my-4
+    = paginate @payments
+
+    %hr.my-4
     %div{:align => "center"}
       = link_to 'New Payment', new_payment_path, class: "btn btn-primary text-uppercase"

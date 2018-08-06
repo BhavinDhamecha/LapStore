@@ -1,4 +1,5 @@
 class Payment < ApplicationRecord
+	paginates_per 2
   belongs_to 	:order
   
   validates 	:mode, presence: true

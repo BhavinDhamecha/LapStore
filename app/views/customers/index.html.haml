@@ -29,6 +29,9 @@
               = link_to 'Edit', edit_customer_path(customer)
             %td
               = link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' }
-    %hr.my-4/
+    %hr.my-4
+    = paginate @customers
+
+    %hr.my-4
     %div{:align => "center"}
       = link_to 'Add Customer', new_customer_path, class: "btn btn-primary"

@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+	paginates_per 2
+	
   belongs_to 	:laptop
   belongs_to 	:customer
   

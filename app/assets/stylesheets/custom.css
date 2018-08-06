@@ -117,3 +117,7 @@ h1 {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.pagination {
+  padding-left: 450px;
+}

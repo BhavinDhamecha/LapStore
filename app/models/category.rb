@@ -1,4 +1,6 @@
 class Category < ApplicationRecord
+	paginates_per 2
+
 	has_many		:laptop_categories
 	has_many		:laptops, through: :laptop_categories, dependent: :destroy
   

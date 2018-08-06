@@ -1,4 +1,6 @@
 class Customer < ApplicationRecord
+	paginates_per 2
+
 	validates :name, presence: true
 	validates :address, presence: true
 	validates :number, format: { with: /\A\d+\z/, message: "Integer only. No sign allowed." }, length: { minimum: 10 }, uniqueness: true
