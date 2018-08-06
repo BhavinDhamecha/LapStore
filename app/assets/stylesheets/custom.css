@@ -1,7 +1,6 @@
 body {
   font-family: 'Nunito';
   letter-spacing: 0.0625em;
-  /*background-color: #edc576;*/
 }
 
 a {
@@ -27,12 +26,11 @@ h1 {
   color: white;
 }
 
-footer p {
-  width: 100%;
-  height: 20px;
+.alert {
+  margin-bottom: 0;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 500px) {
   body {
     padding-top: 50px;
   }
@@ -42,7 +40,7 @@ footer p {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
   padding: 1.25rem 2rem;
   font-family: 'Varela Round';
-  font-size: 80%;
+  font-size: 70%;
   text-transform: uppercase;
   letter-spacing: .15rem;
   border: 0;
@@ -68,7 +66,6 @@ footer p {
 
 .laptop_view {
   background-image: url("laptop_bg.jpg");
-  background-attachment: fixed;
   min-height: 600px; 
   background-attachment: fixed;
   background-position: center;
@@ -78,7 +75,6 @@ footer p {
 
 .customer_view {
   background-image: url("customer_bg.jpg");
-  background-attachment: fixed;
   min-height: 600px; 
   background-attachment: fixed;
   background-position: center;
@@ -88,7 +84,6 @@ footer p {
 
 .order_view {
   background-image: url("order_bg.jpg");
-  background-attachment: fixed;
   min-height: 600px; 
   background-attachment: fixed;
   background-position: center;
@@ -98,7 +93,6 @@ footer p {
 
 .brand_view {
   background-image: url("brand_bg.jpg");
-  background-attachment: fixed;
   min-height: 600px; 
   background-attachment: fixed;
   background-position: center;
@@ -108,7 +102,6 @@ footer p {
 
 .payment_view {
   background-image: url("payment_bg.jpg");
-  background-attachment: fixed;
   min-height: 600px; 
   background-attachment: fixed;
   background-position: center;
@@ -118,7 +111,6 @@ footer p {
 
 .category_view {
   background-image: url("category_bg.jpg");
-  background-attachment: fixed;
   min-height: 600px; 
   background-attachment: fixed;
   background-position: center;
