@@ -1,6 +1,10 @@
 .customer_view
   .container
     %h1 Customers
+    = form_tag(customers_path, method: :get, class: "form-inline") do
+      = text_field_tag :search_customer_name, params[:search_customer_name], placeholder: "Name", class: "form-control"
+      = text_field_tag :search_customer_username, params[:search_customer_username], placeholder: "Username", class: "form-control"
+      = submit_tag 'Search', class: "btn btn-primary"
     %table.table.table-responsive.table-hover
       %thead
         %tr
@@ -29,9 +33,11 @@
               = link_to 'Edit', edit_customer_path(customer)
             %td
               = link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' }
-    %hr.my-4
-    = paginate @customers
+    
+    %hr
+    %div.d-flex.justify-content-center
+      = paginate @customers
 
-    %hr.my-4
+    %hr
     %div{:align => "center"}
       = link_to 'Add Customer', new_customer_path, class: "btn btn-primary"

@@ -1,6 +1,9 @@
 .category_view
   .container
     %h1 Categories
+    = form_tag(categories_path, method: :get, class: "form-inline") do
+      = text_field_tag :search_category_name, params[:search_category_name], placeholder: "Name", class: "form-control"
+      = submit_tag 'Search', class: "btn btn-primary"
     %table.table.table-hover.table-responsive
       %thead
         %tr
@@ -18,9 +21,10 @@
             %td
               = link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
     
-    %hr.my-4
-    = paginate @categories
+    %hr
+    %div.d-flex.justify-content-center
+      = paginate @categories
     
-    %hr.my-4
+    %hr
     %div{:align => "center"}
       = link_to 'Add Category', new_category_path, class: "btn btn-primary text-uppercase"

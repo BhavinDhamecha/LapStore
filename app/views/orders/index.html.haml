@@ -1,6 +1,9 @@
 .order_view
   .container
     %h1 Orders
+    = form_tag(orders_path, method: :get, class: "form-inline") do
+      = date_select :search_order_date, params[:search_order_date], placeholder: "Date", class: "form-control"
+      = submit_tag 'Search', class: "btn btn-primary"
     %table.table.table-hover.table-responsive
       %thead
         %tr
@@ -35,8 +38,11 @@
               = link_to 'Edit', edit_order_path(order)
             %td
               = link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }
-    %hr.my-4
-    = paginate @orders
-    %hr.my-4
+    
+    %hr
+    %div.d-flex.justify-content-center
+      = paginate @orders
+    
+    %hr
     %div{:align => "center"}
       = link_to 'Add Order', new_order_path, class: "btn btn-primary"

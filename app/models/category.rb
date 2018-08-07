@@ -8,4 +8,12 @@ class Category < ApplicationRecord
   accepts_nested_attributes_for :laptops, allow_destroy: true
   
 	validates 	:name, presence: true, uniqueness: true
+
+	def self.search(search_category_name)
+ 		if search_category_name
+ 			where('name LIKE ?', "%#{search_category_name}%").order(:name)
+ 		else
+ 			order(:name)
+ 		end
+ 	end
 end

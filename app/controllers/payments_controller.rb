@@ -4,7 +4,11 @@ class PaymentsController < ApplicationController
   # GET /payments
   # GET /payments.json
   def index
-    @payments = Payment.order(:order_id).page(params[:page])
+    if params[:search_payment_mode]
+      @payments = Payment.search(params[:search_payment_mode]).page( params[:page] )
+    else
+      @payments = Payment.order(:mode).page(params[:page])
+    end
   end
 
   # GET /payments/1

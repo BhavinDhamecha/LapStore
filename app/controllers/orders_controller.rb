@@ -4,7 +4,11 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.order(:date).page(params[:page])
+    if params[:search_order_date]
+      @orders = Order.search(params[:search_order_date]).page( params[:page] )
+    else
+      @orders = Order.order(:date).page(params[:page])
+    end
   end
 
   # GET /orders/1

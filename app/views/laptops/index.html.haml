@@ -1,9 +1,11 @@
 .laptop_view
   .container
     %h1 Laptops
-    = form_tag(laptops_path, method: :get) do
-      = text_field_tag :search_laptop, params[:search_laptop], placeholder: "Search Laptop"
-      = submit_tag 'Search', name: nil
+    = form_tag(laptops_path, method: :get, class: "form-inline") do
+      = text_field_tag :search_laptop_name, params[:search_laptop_name], placeholder: "Laptop name", class: "form-control"
+      = text_field_tag :search_processor, params[:search_processor], placeholder: "Laptop processor", class: "form-control"
+      = select_tag "brand_id", options_from_collection_for_select(@brands, "id", "name", @brand_name), {include_blank: true , class: "form-control" }
+      = submit_tag 'Search', class: "btn btn-primary"
     %br
     %table.table.table-hover.table-responsive
       %thead
@@ -47,10 +49,11 @@
             %td
               = link_to 'Destroy', laptop, method: :delete, data: { confirm: 'Are you sure?' }
     
-    %hr.my-4
-    = paginate @laptops
+    %hr
+    %div.d-flex.justify-content-center
+      = paginate @laptops
     
-    %hr.my-4
+    %hr
     %div{:align => "center"}
       = link_to 'Add Laptop',   new_laptop_path, class: "btn btn-primary"
 

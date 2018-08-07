@@ -1,6 +1,9 @@
 .payment_view
   .container
     %h1 Payments
+    = form_tag(payments_path, method: :get, class: "form-inline") do
+      = text_field_tag :search_payment_mode, params[:search_payment_mode], placeholder: "Mode", class: "form-control"
+      = submit_tag 'Search', class: "btn btn-primary"
     %table.table.table-hover.table-responsive
       %thead
         %tr
@@ -26,9 +29,11 @@
               = link_to 'Edit', edit_payment_path(payment)
             %td
               = link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' }
-    %hr.my-4
-    = paginate @payments
+    
+    %hr
+    %div.d-flex.justify-content-center
+      = paginate @payments
 
-    %hr.my-4
+    %hr
     %div{:align => "center"}
       = link_to 'New Payment', new_payment_path, class: "btn btn-primary text-uppercase"

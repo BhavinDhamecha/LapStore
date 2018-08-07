@@ -4,8 +4,13 @@
   # GET /laptops
   # GET /laptops.json
   def index
-    @laptops = Laptop.order(:name).page(params[:page])
-    # @laptops = Laptop.search(params[:search_laptop])
+    @brands = Brand.all
+    if params[:search_laptop_name] or params[:search_processor] or params[:brand_id]
+      @brand_name = params[:brand_id]
+      @laptops = Laptop.search(params[:search_laptop_name], params[:search_processor], params[:brand_id]).page( params[:page] )
+    else
+      @laptops = Laptop.order(:name).page(params[:page])
+    end
   end
 
   # GET /laptops/1
@@ -71,7 +76,7 @@
     def laptop_params
       params.require(:laptop).permit(:model_number, :name, :serial_number, :ram, 
                                     :hdd, :processor, :weight, :screen, 
-                                    :graphics_card, :usb_port, :hdmi_port, :search_laptop, 
+                                    :graphics_card, :usb_port, :hdmi_port,
                                     :available, :brand_id, :category_ids, images: [],
                                     laptop_categories_attributes: [:id ,:laptop_id, :category_id, :_destroy ] )
     end

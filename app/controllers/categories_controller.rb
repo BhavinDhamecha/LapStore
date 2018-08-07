@@ -4,7 +4,11 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.order(:name).page(params[:page])
+    if params[:search_category_name]
+      @categories = Category.search(params[:search_category_name]).page( params[:page] )
+    else
+      @categories = Category.order(:name).page(params[:page])
+    end
   end
 
   # GET /categories/1

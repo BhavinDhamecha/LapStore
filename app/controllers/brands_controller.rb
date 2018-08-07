@@ -5,7 +5,11 @@ class BrandsController < ApplicationController
   # GET /brands
   # GET /brands.json
   def index
-    @brands = Brand.order(:name).page(params[:page])
+    if params[:search_brand_name]
+      @brands = Brand.search(params[:search_brand_name]).page( params[:page] )
+    else
+      @brands = Brand.order(:name).page(params[:page])
+    end
   end
 
   # GET /brands/1

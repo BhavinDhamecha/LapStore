@@ -23,11 +23,11 @@ class Laptop < ApplicationRecord
  	validates 	:hdmi_port, 		presence: true
 
 
- 	def self.search(search_laptop)
- 		if search_laptop
- 			where('name or processor LIKE ?', "%#{search_laptop}%")
+ 	def self.search(search_laptop_name, search_processor, brand_id)
+ 		if search_laptop_name or search_processor or brand_id
+ 			where('name LIKE ? and processor LIKE ? and brand_id LIKE ?', "%#{search_laptop_name}%", "%#{search_processor}%", "%#{brand_id}%").order(:name)
  		else
- 			all
+ 			order(:name)
  		end
  	end
 
