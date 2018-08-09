@@ -1,6 +1,7 @@
-  class LaptopsController < ApplicationController
+class LaptopsController < ApplicationController
   before_action :set_laptop, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+
   # GET /laptops
   # GET /laptops.json
   def index
@@ -67,9 +68,10 @@
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_laptop
-      @laptop = Laptop.find(params[:id])
+      @laptop = Laptop.find(params[:id]) 
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -80,4 +82,5 @@
                                     :available, :brand_id, :category_ids, images: [],
                                     laptop_categories_attributes: [:id ,:laptop_id, :category_id, :_destroy ] )
     end
+
 end
