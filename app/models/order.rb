@@ -9,9 +9,9 @@ class Order < ApplicationRecord
   validates 	:status, presence: true
   validates 	:amount, presence: true
 
-  def self.search(search_order_date)
- 		if search_order_date
- 			where('date LIKE ?', "%#{search_order_date}%").order(:date)
+  def self.search(laptop_id)
+ 		if laptop_id
+ 			where('laptop_id LIKE ?', "%#{laptop_id}%").order(:date)
  		else
  			order(:date)
  		end

@@ -3,8 +3,10 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    if params[:search_order_date]
-      @orders = Order.search(params[:search_order_date]).page( params[:page] )
+    @laptops = Laptop.all
+    if params[:laptop_id]
+      @laptop_name = params[:laptop_id]
+      @orders = Order.search(params[:laptop_id]).page( params[:page] )
     else
       @orders = Order.order(:date).page(params[:page])
     end

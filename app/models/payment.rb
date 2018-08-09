@@ -6,9 +6,9 @@ class Payment < ApplicationRecord
   validates 	:status, presence: true
   validates 	:amount, presence: true
 
-  def self.search(search_payment_mode)
- 		if search_payment_mode
- 			where('mode LIKE ?', "%#{search_payment_mode}%").order(:mode)
+  def self.search(order_id)
+ 		if order_id
+ 			where('order_id LIKE ?', "%#{order_id}%").order(:mode)
  		else
  			order(:mode)
  		end
