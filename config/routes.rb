@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'home_page/index'
   devise_for :users, skip: [:sessions, :registrations, :passwords]
 
   devise_scope :user do
-    get     '/signin',          to: 'devise/sessions#new',          as: :new_user_session
+    get     '/signin',          to: 'devise/sessions#new',          as: 'new_user_session'
     post    '/signin',          to: 'devise/sessions#create',       as: 'user_session'
 
     delete  '/signout',         to: 'devise/sessions#destroy',      as: 'destroy_user_session'
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
     put     '/forgot-password', to: 'devise/passwords#update',      as: 'password_path'
   end
 
-	root to: 'laptops#index'
+	root to: 'home_page#index'
 
   resources :laptops do
     get 'edit', on: :member
@@ -32,9 +33,6 @@ Rails.application.routes.draw do
   resources :orders
   resources :customers
   resources :brands
-
-  # get '/404', to: 'application#record_not_found'
-  # get '/500', to: 'application#record_not_found' 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
