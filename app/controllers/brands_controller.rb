@@ -4,11 +4,7 @@ class BrandsController < ApplicationController
   # GET /brands
   # GET /brands.json
   def index
-    if params[:search_brand_name]
-      @brands = Brand.search(params[:search_brand_name]).page( params[:page] )
-    else
-      @brands = Brand.order(:name).page(params[:page])
-    end
+    @brands = Brand.search(params[:search_brand_name]).page( params[:page] )
   end
 
   # GET /brands/1
@@ -67,7 +63,8 @@ class BrandsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_brand
-      @brand = Brand.find(params[:id])
+      @brand = Brand.find_by_id(params[:id])
+      redirect_to brands_path, notice: "Brand not found" if @brand.blank?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

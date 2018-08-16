@@ -1,8 +1,5 @@
 class ApplicationController < ActionController::Base
-	rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-
-  def record_not_found
-    redirect_to laptops_path, alert: "Not found. Redirect to Home page."
-  end
-
+	def after_sign_in_path_for(resource)
+		laptops_path
+	end
 end

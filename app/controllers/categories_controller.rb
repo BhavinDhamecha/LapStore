@@ -3,11 +3,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    if params[:search_category_name]
-      @categories = Category.search(params[:search_category_name]).page( params[:page] )
-    else
-      @categories = Category.order(:name).page(params[:page])
-    end
+    @categories = Category.search(params[:search_category_name]).page( params[:page] )
   end
 
   # GET /categories/1
@@ -66,7 +62,8 @@ class CategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
-      @category = Category.find(params[:id])
+      @category = Category.find_by_id(params[:id])
+      redirect_to categories_path, notice: "Category not found" if @category.blank?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

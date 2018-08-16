@@ -1,8 +1,10 @@
 .order_view
   .container
     %h1 Orders
+    %div{align: "right"}
+      = link_to 'Add Order', new_order_path, class: "btn btn-primary"
     = form_tag(orders_path, method: :get, class: "form-inline") do
-      = select_tag "laptop_id", options_from_collection_for_select(@laptops, "id", "name", @laptop_name), {include_blank: true , class: "form-control" }
+      = select_tag "laptop_id", options_from_collection_for_select(@laptops, "id", "name", @laptop_name), {include_blank: "Select laptop" , class: "form-control" }
 
       = submit_tag 'Search', class: "btn btn-primary"
     %table.table.table-hover.table-responsive
@@ -44,6 +46,3 @@
     %div.d-flex.justify-content-center
       = paginate @orders
     
-    %hr
-    %div{:align => "center"}
-      = link_to 'Add Order', new_order_path, class: "btn btn-primary"

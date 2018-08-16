@@ -1,9 +1,10 @@
 .payment_view
   .container
     %h1 Payments
+    %div{align: "right"}
+      = link_to 'New Payment', new_payment_path, class: "btn btn-primary text-uppercase"
     = form_tag(payments_path, method: :get, class: "form-inline") do
-      / = text_field_tag :search_payment_mode, params[:search_payment_mode], placeholder: "Mode", class: "form-control"
-      = select_tag "order_id", options_from_collection_for_select(@orders, "id", "date", @order_date), {include_blank: true , class: "form-control" }
+      = select_tag "order_id", options_from_collection_for_select(@orders, "id", "date", @order_date), {include_blank: "Select Order date" , class: "form-control" }
       = submit_tag 'Search', class: "btn btn-primary"
     %table.table.table-hover.table-responsive
       %thead
@@ -35,6 +36,3 @@
     %div.d-flex.justify-content-center
       = paginate @payments
 
-    %hr
-    %div{:align => "center"}
-      = link_to 'New Payment', new_payment_path, class: "btn btn-primary text-uppercase"

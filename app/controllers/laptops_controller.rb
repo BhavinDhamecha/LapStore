@@ -1,16 +1,21 @@
 class LaptopsController < ApplicationController
   before_action :set_laptop, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!
 
   # GET /laptops
   # GET /laptops.json
   def index
     @brands = Brand.all
-    if params[:search_laptop_name] or params[:search_processor] or params[:brand_id]
-      @brand_name = params[:brand_id]
-      @laptops = Laptop.search(params[:search_laptop_name], params[:search_processor], params[:brand_id]).page( params[:page] )
-    else
-      @laptops = Laptop.order(:name).page(params[:page])
+    @brand_name = params[:brand_id]
+    @laptops = Laptop.search(params[:search_laptop_name], params[:search_processor], params[:brand_id]).page( params[:page] )
+    # if params[:email]
+    #   SendDetailMailer.with(user: @user).submission.deliver_now
+    #   # SendDetailJob.perform_later
+    # end
+  end
+
+  def send_detail
+    if params[:email]
+      SendDetailMailer.with(user: @user).submission.deliver_now
     end
   end
 
@@ -71,7 +76,8 @@ class LaptopsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_laptop
-      @laptop = Laptop.find(params[:id]) 
+      @laptop = Laptop.find_by_id(params[:id])
+      redirect_to laptops_path, notice: "Laptop not found" if @laptop.blank?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -4,12 +4,8 @@ class PaymentsController < ApplicationController
   # GET /payments.json
   def index
     @orders = Order.all
-    if params[:order_id]
-      @order_date = params[:order_id]
-      @payments = Payment.search(params[:order_id]).page( params[:page] )
-    else
-      @payments = Payment.order(:mode).page(params[:page])
-    end
+    @order_date = params[:order_id]
+    @payments = Payment.search(params[:order_id]).page( params[:page] )
   end
 
   # GET /payments/1
@@ -68,7 +64,8 @@ class PaymentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_payment
-      @payment = Payment.find(params[:id])
+      @payment = Payment.find_by_id(params[:id])
+      redirect_to payments_path, notice: "Payment not found" if @payment.blank?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

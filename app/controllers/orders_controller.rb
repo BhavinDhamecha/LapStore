@@ -4,12 +4,8 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @laptops = Laptop.all
-    if params[:laptop_id]
-      @laptop_name = params[:laptop_id]
-      @orders = Order.search(params[:laptop_id]).page( params[:page] )
-    else
-      @orders = Order.order(:date).page(params[:page])
-    end
+    @laptop_name = params[:laptop_id]
+    @orders = Order.search(params[:laptop_id]).page( params[:page] )
   end
 
   # GET /orders/1
@@ -68,7 +64,8 @@ class OrdersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
-      @order = Order.find(params[:id])
+      @order = Order.find_by_id(params[:id])
+      redirect_to orders_path, notice: "Order not found" if @order.blank?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

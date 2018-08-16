@@ -1,6 +1,8 @@
 .customer_view
   .container
     %h1 Customers
+    %div{align: "right"}
+      = link_to 'Add Customer', new_customer_path, class: "btn btn-primary"
     = form_tag(customers_path, method: :get, class: "form-inline") do
       = text_field_tag :search_customer_name, params[:search_customer_name], placeholder: "Name", class: "form-control"
       = text_field_tag :search_customer_username, params[:search_customer_username], placeholder: "Username", class: "form-control"
@@ -38,6 +40,3 @@
     %div.d-flex.justify-content-center
       = paginate @customers
 
-    %hr
-    %div{:align => "center"}
-      = link_to 'Add Customer', new_customer_path, class: "btn btn-primary"

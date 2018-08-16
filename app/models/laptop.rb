@@ -8,7 +8,6 @@ class Laptop < ApplicationRecord
   has_many_attached	:images
 
   accepts_nested_attributes_for :laptop_categories, allow_destroy: true, reject_if: :all_blank
-  accepts_nested_attributes_for :categories, 				allow_destroy: true
   
   validates 	:model_number, 	presence: true
  	validates 	:name, 					presence: true

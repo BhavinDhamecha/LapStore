@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+	root to: 'home_page#index'
   get 'home_page/index'
+
   devise_for :users, skip: [:sessions, :registrations, :passwords]
 
   devise_scope :user do
@@ -21,10 +23,10 @@ Rails.application.routes.draw do
     put     '/forgot-password', to: 'devise/passwords#update',      as: 'password_path'
   end
 
-	root to: 'home_page#index'
 
   resources :laptops do
     get 'edit', on: :member
+    get '/send_detail', to: 'laptops#send_detail'
   end
   resources :categories do
     get :index, on: :collection

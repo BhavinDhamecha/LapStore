@@ -3,11 +3,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    if params[:search_customer_name] or params[:search_customer_username]
-      @customers = Customer.search(params[:search_customer_name], params[:search_customer_username]).page( params[:page] )
-    else
-      @customers = Customer.order(:name).page(params[:page])
-    end
+    @customers = Customer.search(params[:search_customer_name], params[:search_customer_username]).page( params[:page] )
   end
 
   # GET /customers/1
@@ -66,7 +62,8 @@ class CustomersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
-      @customer = Customer.find(params[:id])
+      @customer = Customer.find_by_id(params[:id])
+      redirect_to customers_path, notice: "Customer not found" if @customer.blank?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
