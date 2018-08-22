@@ -2,7 +2,36 @@
   %div.container.d-flex.h-100.align-items-center
     %div.mx-auto.text-center
       %h1.mx-auto.my-0.text-uppercase Welcome to Lapstore.
-      %p.text-black-50.mx-auto Where you can find all type of Laptops.
-      %p.text-black-50.mx-auto Before moving ahead, you have to...
-      = link_to 'Sign Up',  new_user_registration_path, class: "btn btn-primary js-scroll-trigger"
-      = link_to 'Login',    new_user_session_path,      class: "btn btn-primary js-scroll-trigger"
+      %h4.text-black-50.mx-auto Where you can find all type of Laptops.
+      %h4.text-black-50.mx-auto Let's have a look...
+      %section.banner.bgwhite.p-t-40.p-b-40
+  .container
+    .row
+      .col-sm-10.col-md-8.col-lg-4.m-l-r-auto
+        .block1.hov-img-zoom.pos-relative.m-b-30
+          = image_tag("laptop.png", alt: "IMG-BENNER")
+          %h4.text-white-50.mx-auto.text-center HP
+        .block1.hov-img-zoom.pos-relative.m-b-30
+          = image_tag("laptop.png", alt: "IMG-BENNER")
+          %h4.text-white-50.mx-auto.text-center Dell
+      .col-sm-10.col-md-8.col-lg-4.m-l-r-auto
+        .block1.hov-img-zoom.pos-relative.m-b-30
+          = image_tag("laptop.png", alt: "IMG-BENNER")
+          %h4.text-white-50.mx-auto.text-center Lenovo
+          .block1.hov-img-zoom.pos-relative.m-b-30
+            = image_tag("laptop.png", alt: "IMG-BENNER")
+            %h4.text-white-50.mx-auto.text-center Asus
+            .block2-content.sizefull.ab-t-l.flex-col-c-m.text-center
+              %h4.m-text4.w-size3.p-b-8.text-white
+                Sign up and get 20% off
+              %p.t-center.w-size4.text-white
+                Be the frist to know about the latest Laptop news and get exclusive offers
+              .w-size2.p-t-25
+                = link_to 'Sign Up', new_user_registration_path, class: "btn btn-primary js-scroll-trigger"
+      .col-sm-10.col-md-8.col-lg-4.m-l-r-auto
+        .block1.hov-img-zoom.pos-relative.m-b-30
+          = image_tag("laptop.png", alt: "IMG-BENNER")
+          %h4.text-white-50.mx-auto.text-center Apple
+        .block2.wrap-pic-w.pos-relative.m-b-30
+          = image_tag("laptop.png", alt: "IMG-BENNER")
+          %h4.text-white-50.mx-auto.text-center Samsung
