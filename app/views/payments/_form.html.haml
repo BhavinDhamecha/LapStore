@@ -13,7 +13,7 @@
                   - payment.errors.full_messages.each do |message|
                     %li= message
             = form.label :order_id
-            = form.select("order_id", Order.all.collect { |order|  order.id }, {}, class: "form-control")
+            = form.select("order_id", Order.all.collect { |order|  [order.date, order.id] }, {include_blank: "Select Order"},                class: "form-control")
            
             = form.label :mode
             = form.text_field :mode,      autofocus: true,   class: "form-control"

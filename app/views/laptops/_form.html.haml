@@ -16,12 +16,14 @@
             = form.label          :name
             = form.text_field     :name, autofocus: true,           class: "form-control"
             = form.label          :brand
-            = form.select("brand_id", Brand.all.collect {|brand| [ brand.name, brand.id ] },{}, class: "form-control")
+            = form.select("brand_id", Brand.all.collect {|brand| [ brand.name, brand.id ] },{include_blank: "Select Brand"}, class: "form-control")
+            %br
             #categories
               = form.fields_for   :laptop_categories do |categories|
                 = render 'laptop_category_fields', f: categories
               .links
                 = link_to_add_association 'Add Category', form, :laptop_categories
+            %br
             = form.label          :serial_number
             = form.text_field     :serial_number, autofocus: true,  class: "form-control"
             = form.label          :ram

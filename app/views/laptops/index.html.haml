@@ -2,7 +2,7 @@
   .container
     %h1 Laptops
     %div{align: "right"}
-      = link_to 'Add Laptop',   new_laptop_path, class: "btn btn-primary"
+      = link_to 'Add Laptop', new_laptop_path, class: "btn btn-primary"
     = form_tag(laptops_path, method: :get, class: "form-inline") do
       = text_field_tag :search_laptop_name, params[:search_laptop_name], placeholder: "Laptop name", class: "form-control"
       = text_field_tag :search_processor, params[:search_processor], placeholder: "Laptop processor", class: "form-control"
@@ -11,6 +11,7 @@
     %table.table.table-hover.table-responsive
       %thead
         %tr
+          %th Id
           %th Name
           %th Brand
           %th Category
@@ -25,6 +26,8 @@
       %tbody
         - @laptops.each do |laptop|
           %tr
+            %td
+              = laptop.id
             %td
               = laptop.name
             %td
@@ -51,8 +54,9 @@
             %td
               = link_to 'Destroy', laptop, method: :delete, data: { confirm: 'Are you sure?' }
             %td
-              = render 'send_detail', laptop: laptop
-              
+              = form_tag(laptop_send_detail_path(laptop_id: laptop.id), method: :get) do
+                = text_field_tag :email, params[:email] ,placeholder: "Enter email", class: "form-control"
+                = submit_tag 'Send detail'           
     %hr
     %div.d-flex.justify-content-center
       = paginate @laptops
