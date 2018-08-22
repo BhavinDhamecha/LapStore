@@ -9,17 +9,8 @@ class Laptop < ApplicationRecord
 
   accepts_nested_attributes_for :laptop_categories, allow_destroy: true, reject_if: :all_blank
   
-  validates 	:model_number, 	presence: true
- 	validates 	:name, 					presence: true
+  validates 	:model_number, :name, :ram, :hdd, :processor, :weight, :screen, :usb_port, :graphics_card, :hdmi_port, 	presence: true
  	validates 	:serial_number, presence: true, uniqueness: true
- 	validates 	:ram, 					presence: true
- 	validates 	:hdd, 					presence: true
- 	validates 	:processor,			presence: true
- 	validates 	:weight, 				presence: true
- 	validates 	:screen, 				presence: true
- 	validates 	:usb_port, 			presence: true
- 	validates 	:graphics_card, presence: true
- 	validates 	:hdmi_port, 		presence: true
 
 
  	def self.search(search_laptop_name, search_processor, brand_id)
