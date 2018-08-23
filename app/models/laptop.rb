@@ -12,13 +12,18 @@ class Laptop < ApplicationRecord
   validates 	:model_number, :name, :ram, :hdd, :processor, :weight, :screen, :usb_port, :graphics_card, :hdmi_port, 	presence: true
  	validates 	:serial_number, presence: true, uniqueness: true
 
-
- 	def self.search(search_laptop_name, search_processor, brand_id)
- 		if search_laptop_name or search_processor or brand_id
- 			where('name LIKE ? and processor LIKE ? and brand_id LIKE ?', "%#{search_laptop_name}%", "%#{search_processor}%", "%#{brand_id}%").order(:name)
+ 	# def self.search(search_laptop_name, search_processor, brand_id)
+ 	# 	if search_laptop_name or search_processor or brand_id
+ 	# 		where('name LIKE ? and processor LIKE ? and brand_id LIKE ?', "%#{search_laptop_name}%", "%#{search_processor}%", "%#{brand_id}%").order(:name)
+ 	# 	else
+ 	# 		order(:name)
+ 	# 	end
+ 	# end
+ 	def self.search(laptop_id, brand_id)
+ 		if laptop_id or brand_id
+ 			where('id LIKE ? and brand_id LIKE ?', "%#{laptop_id}%", "%#{brand_id}%").order(:name)
  		else
  			order(:name)
  		end
  	end
-
 end

@@ -4,9 +4,10 @@
     %div{align: "right"}
       = link_to 'Add Laptop', new_laptop_path, class: "btn btn-primary"
     = form_tag(laptops_path, method: :get, class: "form-inline") do
-      = text_field_tag :search_laptop_name, params[:search_laptop_name], placeholder: "Laptop name", class: "form-control"
-      = text_field_tag :search_processor, params[:search_processor], placeholder: "Laptop processor", class: "form-control"
-      = select_tag "brand_id", options_from_collection_for_select(@brands, "id", "name", @brand_name), {include_blank: "Select Brand" ,class: "form-control" }
+      = select_tag "brand_id", options_from_collection_for_select(@brands, "id", "name", @brand_name), {prompt: "Select Brand", class: "form-control dependent-dropdown", id: "brand_id", data: {url: "/select-brand?brand_id=", target: "laptop_id"} }
+      = select_tag "laptop_id", options_from_collection_for_select(@laptops, "id", "name", @laptop_name), {prompt: "Select laptop" , class: "form-control", id: "laptop_id" }
+      / = text_field_tag :search_laptop_name, params[:search_laptop_name], placeholder: "Laptop name", class: "form-control"
+      / = text_field_tag :search_processor, params[:search_processor], placeholder: "Laptop processor", class: "form-control"
       = submit_tag 'Search', class: "btn btn-primary"
     %table.table.table-hover.table-responsive
       %thead

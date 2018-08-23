@@ -26,8 +26,11 @@ Rails.application.routes.draw do
 
   resources :laptops do
     get 'edit', on: :member
-    get '/send_detail', to: 'laptops#send_detail'
+    get '/send-detail',   to: 'laptops#send_detail'
   end
+  
+  get '/select-brand',   to: 'laptops#select_brand'
+
   resources :categories do
     get :index, on: :collection
   end

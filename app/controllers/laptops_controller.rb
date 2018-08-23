@@ -6,17 +6,22 @@ class LaptopsController < ApplicationController
   def index
     @brands = Brand.all
     @brand_name = params[:brand_id]
-    @laptops = Laptop.search(params[:search_laptop_name], params[:search_processor], params[:brand_id]).page( params[:page] )
-    # if params[:email]
-    #   SendDetailMailer.with(user: @user).submission.deliver_now
-    #   # SendDetailJob.perform_later
-    # end
+    @laptop_name = params[:laptop_id]
+    # @laptops = Laptop.search(params[:search_laptop_name], params[:search_processor], params[:brand_id]).page( params[:page] )
+    @laptops = Laptop.search(params[:laptop_id], params[:brand_id]).page( params[:page] )
   end
 
   def send_detail
     if params[:email]
-      SendDetailMailer.with(user: @user).submission.deliver_now
+      # SendDetailMailer.with(user: @user).submission.deliver_later
+      SendDetailJob.perform_later
     end
+  end
+
+  def select_brand
+    @brand = Brand.find_by_id(params[:brand_id])
+    data = Laptop.where(brand_id: @brand.id).uniq
+    render json: data
   end
 
   # GET /laptops/1
