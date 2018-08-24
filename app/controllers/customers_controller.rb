@@ -3,12 +3,17 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.search(params[:search_customer_name], params[:search_customer_username]).page( params[:page] )
+    @customers = Customer.search(params[:search_customer_name], params[:search_customer_username]).page(params[:page])
   end
 
   # GET /customers/1
   # GET /customers/1.json
   def show
+  end
+
+  def references
+    references = Customer.where("name LIKE ?", "%#{params[:term]}%").pluck(:name)
+    render json: references, status: :ok
   end
 
   # GET /customers/new

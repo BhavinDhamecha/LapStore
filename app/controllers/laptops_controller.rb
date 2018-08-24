@@ -7,15 +7,18 @@ class LaptopsController < ApplicationController
     @brands = Brand.all
     @brand_name = params[:brand_id]
     @laptop_name = params[:laptop_id]
-    # @laptops = Laptop.search(params[:search_laptop_name], params[:search_processor], params[:brand_id]).page( params[:page] )
-    @laptops = Laptop.search(params[:laptop_id], params[:brand_id]).page( params[:page] )
+    @laptops = Laptop.search(params[:laptop_id], params[:brand_id], params[:search_processor]).page( params[:page] )
   end
 
   def send_detail
     if params[:email]
-      # SendDetailMailer.with(user: @user).submission.deliver_later
       SendDetailJob.perform_later
     end
+  end
+
+  def auto_search
+    auto_search = Laptop.where("processor LIKE ?", "%#{params[:term]}%").pluck(:processor)
+    render json: auto_search, status: :ok
   end
 
   def select_brand

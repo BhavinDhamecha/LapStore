@@ -29,7 +29,8 @@ Rails.application.routes.draw do
     get '/send-detail',   to: 'laptops#send_detail'
   end
   
-  get '/select-brand',   to: 'laptops#select_brand'
+  get '/select-brand',  to: 'laptops#select_brand'
+  get '/auto_search',   to: 'laptops#auto_search'
 
   resources :categories do
     get :index, on: :collection
@@ -37,6 +38,7 @@ Rails.application.routes.draw do
   resources :payments
   resources :orders
   resources :customers
+  get '/references',   to: 'customers#references'
   resources :brands
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

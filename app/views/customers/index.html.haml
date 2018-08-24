@@ -4,8 +4,8 @@
     %div{align: "right"}
       = link_to 'Add Customer', new_customer_path, class: "btn btn-primary"
     = form_tag(customers_path, method: :get, class: "form-inline") do
-      = text_field_tag :search_customer_name, params[:search_customer_name], placeholder: "Name", class: "form-control"
-      = text_field_tag :search_customer_username, params[:search_customer_username], placeholder: "Username", class: "form-control"
+      = text_field_tag :search_customer_name, params[:search_customer_name], placeholder: "Name", class: "form-control autocomplete", autocomplete: "off", data: {url: "/references"}
+      = text_field_tag :search_customer_username, params[:search_customer_username], placeholder: "Username", class: "form-control", autocomplete: "off"
       = submit_tag 'Search', class: "btn btn-primary"
     %table.table.table-responsive.table-hover
       %thead
