@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-	root to: 'home_page#index'
+  root to: 'home_page#index'
   get 'home_page/index'
 
   devise_for :users, skip: [:sessions, :registrations, :passwords]
@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   resources :customers
   get '/references',   to: 'customers#references'
   resources :brands
+  resources :shops
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,23 @@
+.container
+  .row
+    .col-sm-9.col-md-7.col-lg-5.mx-auto
+      .card.card-signin.my-5
+        .card-body
+          = form_with(model: shop, local: true) do |form|
+            - if shop.errors.any?
+              %h3
+                = pluralize(shop.errors.count, "error")
+                prohibited this shop from being saved:
+              %ul
+                - shop.errors.full_messages.each do |message|
+                  %li= message
+            = form.label :name
+            = form.text_field :name, autofocus: true,  class: "form-control"
+            = form.label :address
+            = form.text_field :address, autofocus: true,  class: "form-control"
+            = form.label :latitude
+            = form.text_field :latitude, autofocus: true,  class: "form-control"
+            = form.label :longitude
+            = form.text_field :longitude, autofocus: true,  class: "form-control"
+            .hr.my-4
+            = form.submit "Submit", class: "btn btn-primary btn-block text-uppercase"

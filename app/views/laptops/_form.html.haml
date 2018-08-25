@@ -47,6 +47,12 @@
               = form.label        :available,                class: "custom-control-label"
             = form.label          :images
             = form.file_field     :images, multiple: true,   class: "form-control"
-            
+            %br
+            #shops
+              = form.fields_for   :laptop_shops do |shops|
+                = render 'laptop_shop_fields', f: shops
+              .links
+                = link_to_add_association 'Add Shop', form, :laptop_shops
+            %br
             %hr.my-4
             = form.submit "Submit", class: "btn btn-primary btn-block text-uppercase"

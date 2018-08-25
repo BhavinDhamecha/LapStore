@@ -52,7 +52,10 @@
             %p
               %strong Available:
               = @laptop.available
-          
+            %p
+              %strong Shop:
+              - @laptop.shops.each do |shop|
+                = shop.name       
           %hr.my-4/
           %div{:align => "center"}
             = link_to 'Edit', edit_laptop_path(@laptop), class: "btn btn-primary"

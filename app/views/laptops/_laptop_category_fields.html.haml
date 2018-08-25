@@ -1,4 +1,4 @@
 .nested-fields
   = f.label :category
-  = f.select("category_id", Category.all.collect { |category| [category.name, category.id] },{include_blank: "Select Category"}, class: "form-control")
+  = f.select("category_id", Category.all.collect { |category| [category.name, category.id] },{prompt: "Select Category"}, class: "form-control")
   = link_to_remove_association "Remove", f

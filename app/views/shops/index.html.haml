@@ -1,0 +1,81 @@
+.laptop_view
+  .container
+    %h1 Shops
+    %ul.nav.nav-tabs
+      %li.nav-item
+        %a.nav-link.active{"data-toggle" => "tab", :href => "#list"} List View
+      %li.nav-item
+        %a.nav-link{"data-toggle" => "tab", :href => "#map_wrapper"} Map View
+    .tab-content
+      #list.tab-pane.active
+        %div{align: "right"}
+          = link_to 'Add Shop', new_shop_path, class: "btn btn-primary"
+        %table.table.table-hover.table-responsive
+          %thead
+            %tr
+              %th Name
+              %th Address
+              %th Latitude
+              %th Longitude
+              %th
+              %th
+              %th
+
+          %tbody
+            - @shops.each do |shop|
+              %tr
+                %td= shop.name
+                %td= shop.address
+                %td= shop.latitude
+                %td= shop.longitude
+                %td= link_to 'Show', shop
+                %td= link_to 'Edit', edit_shop_path(shop)
+                %td= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' }
+        %hr
+        %div.d-flex.justify-content-center
+          = paginate @shops
+
+      #map_wrapper.container.tab-pane.fade
+        #map_canvas.mapping
+          :javascript
+            function initialize() {
+              var map;
+              var bounds = new google.maps.LatLngBounds();
+              map = new google.maps.Map(document.getElementById("map_canvas"));
+              var markers = []
+              markers = #{@position}
+              var infoWindowContent = []
+              var array = []
+              infoWindowContent = #{raw @info_window}
+              console.log(infoWindowContent)
+              var icon = {
+                          url: "assets/marker.png",
+                          scaledSize: new google.maps.Size(30, 30)
+                      };
+              var infoWindow = new google.maps.InfoWindow(), marker, i;
+              for( i = 0; i < markers.length; i++ ) {
+                array[i] = '<h3>' + infoWindowContent[i][0] + '</h3>' +
+                            '<p>' + infoWindowContent[i][1] + '</p>'
+                var position = new google.maps.LatLng(markers[i][0], markers[i][1]);
+                bounds.extend(position);
+                marker = new google.maps.Marker({
+                  position: position,
+                  map: map,
+                  icon: icon
+                });
+
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                  return function() {
+                    infoWindow.setContent(array[i]);
+                    infoWindow.open(map, marker);
+                  }
+                })(marker, i));
+              }
+              map.fitBounds(bounds);
+              var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+                this.setZoom(12);
+                google.maps.event.removeListener(boundsListener);
+              });
+            }
+
+  %script{src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBme_rTSaBqyrI_w_kAnpKe3j1O7bImt7Q&callback=initialize"}

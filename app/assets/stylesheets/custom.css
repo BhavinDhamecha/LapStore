@@ -118,6 +118,15 @@ h1 {
   background-size: cover;
 }
 
+.shop_view {
+  background-image: url("category_bg.jpg");
+  min-height: 600px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .masthead {
   position: relative;
   width: 100%;
@@ -129,4 +138,14 @@ h1 {
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
+}
+
+#map_wrapper {
+  height: 500px;
+  margin-top: 10px;
+}
+
+#map_canvas {
+  width: 100%;
+  height: 100%;
 }

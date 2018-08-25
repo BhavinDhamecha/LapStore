@@ -1,0 +1,7 @@
+.shop_view
+  %h1.card-title.text-center Edit Shop
+  = render 'form', shop: @shop
+  %hr.my-4
+  %div{:align => "center"}
+    = link_to 'Show', @shop, 			class: "btn btn-primary"
+    = link_to 'Back', shops_path, 	class: "btn btn-primary"

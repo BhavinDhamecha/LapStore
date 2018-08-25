@@ -93,8 +93,9 @@ class LaptopsController < ApplicationController
       params.require(:laptop).permit(:model_number, :name, :serial_number, :ram, 
                                     :hdd, :processor, :weight, :screen, 
                                     :graphics_card, :usb_port, :hdmi_port,
-                                    :available, :brand_id, :category_ids, images: [],
-                                    laptop_categories_attributes: [:id ,:laptop_id, :category_id, :_destroy ] )
+                                    :available, :brand_id, images: [],
+                                    laptop_categories_attributes: [:id ,:laptop_id, :category_id, :_destroy ],
+                                    laptop_shops_attributes: [:id ,:laptop_id, :shop_id, :latitude, :longitude, :_destroy ] )
     end
 
 end

@@ -1,0 +1,4 @@
+.nested-fields
+  = f.label :shop
+  = f.select("shop_id", Shop.all.collect { |shop| [shop.name, shop.id] },{prompt: "Select Shop"}, class: "form-control")
+  = link_to_remove_association "Remove", f
