@@ -31,6 +31,8 @@
               %li
                 = link_to 'Shop',     shops_path,      class: "nav-link"
               %li
+                = link_to 'Terms & Conditions',     terms_condition_path,      class: "nav-link"
+              %li
                 = link_to current_user.email, edit_user_registration_path,    class: "nav-link"
               %li
                 = link_to 'Logout', destroy_user_session_path, method: :delete,class: "nav-link"
