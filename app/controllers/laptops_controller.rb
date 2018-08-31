@@ -1,13 +1,12 @@
 class LaptopsController < ApplicationController
   before_action :set_laptop, only: [:show, :edit, :update, :destroy]
-
   # GET /laptops
   # GET /laptops.json
   def index
     @brands = Brand.all
-    @brand_name = params[:brand_id]
-    @laptop_name = params[:laptop_id]
-    @laptops = Laptop.search(params[:laptop_id], params[:brand_id], params[:search_processor]).page( params[:page] )
+    @brand_name   = params[:brand_id]
+    @laptop_name  = params[:laptop_id]
+    @laptops = Laptop.search(params[:brand_id], params[:laptop_id], params[:search_processor], params[:search_screen], params[:search_graphics_card]).page(params[:page])
   end
 
   def send_detail
@@ -17,7 +16,7 @@ class LaptopsController < ApplicationController
   end
 
   def auto_search
-    auto_search = Laptop.where("processor LIKE ?", "%#{params[:term]}%").pluck(:processor)
+    auto_search = Laptop.where("processor LIKE ?", "%#{params[:term]}%").pluck(:processor).uniq
     render json: auto_search, status: :ok
   end
 
