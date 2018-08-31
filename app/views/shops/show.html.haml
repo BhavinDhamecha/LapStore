@@ -1,23 +1,23 @@
 .shop_view
   .container
     .card-body
-      #carouselExampleControls.carousel.slide{"data-ride" => "carousel"}
-        .carousel-inner
-          .carousel-item.active
-            %p#notice= notice
-            %p
-              %strong Name:
-              = @shop.name
-            %p
-              %strong Address:
-              = @shop.address
-            %p
-              %strong Latitude:
-              = @shop.latitude
-            %p
-              %strong Longitude:
-              = @shop.longitude
-          %hr.my-4
-          %div{:align => "center"}
-            = link_to 'Edit', edit_shop_path(@shop),   class: "btn btn-primary"
-            = link_to 'Back', shops_path,              class: "btn btn-primary"
+      %p#notice= notice
+      %p
+        %strong Name:
+        = @shop.name
+      %p
+        %strong Address:
+        = @shop.address
+      %p
+        %strong Latitude:
+        = @shop.latitude
+      %p
+        %strong Longitude:
+        = @shop.longitude
+
+      = image_tag @shop.image.variant(resize: "400x400")
+
+    %hr.my-4
+    %div{:align => "center"}
+      = link_to 'Edit', edit_shop_path(@shop),   class: "btn btn-primary"
+      = link_to 'Back', shops_path,              class: "btn btn-primary"

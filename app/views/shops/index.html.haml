@@ -47,17 +47,18 @@
               var infoWindowContent = []
               var array = []
               infoWindowContent = #{raw @info_window}
-              console.log(infoWindowContent)
-              var icon = {
-                          url: "assets/marker.png",
-                          scaledSize: new google.maps.Size(30, 30)
-                      };
+              
               var infoWindow = new google.maps.InfoWindow(), marker, i;
               for( i = 0; i < markers.length; i++ ) {
-                array[i] = '<h3>' + infoWindowContent[i][0] + '</h3>' +
+                array[i] =  '<img src = '+ infoWindowContent[i][2] +' height = "150" width = "150" >' +
+                            '<h5>' + infoWindowContent[i][0] + '</h5>' +
                             '<p>' + infoWindowContent[i][1] + '</p>'
                 var position = new google.maps.LatLng(markers[i][0], markers[i][1]);
                 bounds.extend(position);
+                icon = {
+                        url: "assets/marker.png",
+                        scaledSize: new google.maps.Size(30, 30)
+                }
                 marker = new google.maps.Marker({
                   position: position,
                   map: map,

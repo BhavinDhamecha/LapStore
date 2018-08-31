@@ -2,6 +2,8 @@ class Shop < ApplicationRecord
 	paginates_per 2
   validates   :name, :address, presence: true
 
+  has_one_attached :image
+
 	geocoded_by :address
 	after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
